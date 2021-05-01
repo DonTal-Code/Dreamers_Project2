@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+{% block title %}
+	- Detail ORDER
+	{{ orderId }}
+{% endblock %}
+{% block content %}
+	<section id="order" class="container">
+		<h1 class="text-center">Veuillez remplir les champs de paiement et de livraison</h1>
+		<div class="text-center">
+			<form action="" method="POST">
+				<div class="mb-3">
+					<label for="address">Veuillez confirmer votre adresse</label>
+					<input type="text" id="address" class="form-control" name="address" value="{{ session.user.adress }}">
+				</div>
+				<button type="submit" class="button button-mob">Payer</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}

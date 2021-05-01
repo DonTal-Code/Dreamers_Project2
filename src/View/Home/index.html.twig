@@ -1,0 +1,113 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+{% include "/_nav_user.html.twig" %}
+<div id="load"></div>
+<main class='background-home' id="body">
+    <h1 id="home_title"></h1>
+    <header>
+        <iframe  id="home_video" width="100%" height="100%" margin left="0" margin right="0" src="https://www.youtube.com/embed/LfMBsRFmDdI?&autoplay=1&loop=1&mute=1&playlist=LfMBsRFmDdI" >> frameborder="0"  allowfullscreen></iframe>
+    </header>
+    <div class="separation"><hr></div>
+    <div class="container-fluid">
+      <div class="buttons">
+        <a class="button_gradient m-4" href="#">Réservez maintenant</a>   
+      </div>
+    </div>
+    <div class="separation"><hr></div>
+    <div id="carouselExampleControls1" class="carousel slide text-center mt-2 mb-2" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" id="carousel_home_main">
+          <img src="https://zupimages.net/up/21/16/dub6.jpg" class="img-fluid mx-2" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://zupimages.net/up/21/17/9oqw.jpeg" class="img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://zupimages.net/up/21/16/lan1.jpg" class="img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://zupimages.net/up/21/17/n48g.jpeg" class="img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://zupimages.net/up/21/16/3ga1.jpg" class="img-fluid" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://zupimages.net/up/21/17/xa7f.jpeg" class="img-fluid" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="separation"><hr></div>
+    <div class="about_us container-fluid mt-5 pb-5">
+      <h2>UNE SALLE DE RÉALITÉ VIRTUELLE PAS COMME LES AUTRES...</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla?</p>
+      <div class="row container-fluid mt-3">
+        <div class="col-4">
+          <img src="https://zupimages.net/up/21/17/9oqw.jpeg" class="img-fluid mx-2" alt="...">
+        </div>
+        <div class="col-4">
+          <img src="https://zupimages.net/up/21/17/n48g.jpeg" class="img-fluid mx-2" alt="...">
+        </div>
+        <div class="col-4">
+          <img src="https://zupimages.net/up/21/17/xa7f.jpeg" class="img-fluid mx-2" alt="...">
+        </div>
+      </div>
+    </div>
+    <div class="separation"><hr></div>
+    <div class="home_movies_part container-fluid mt-5 pb-5">
+      <h2>VIVEZ UNE EXPERIENCE INEDITE...</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla?</p>
+      <div class="container-fluid">
+        <div class="buttons">
+          <a class="button m-2" href="movie/indexForUser">Découvrir</a> 
+          <a class="button_gradient m-2" href="#">Réservez maintenant</a>  
+        </div>
+      </div>
+    </div>
+    <div class="separation"><hr></div>
+    <div class="home_movies_part container-fluid mt-5 pb-5">
+      <h2>ENVIE DE PROLONGER L'EXPERIENCE ? DECOUVREZ NOTRE BOUTIQUE...</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam tenetur quo expedita impedit ut ea similique explicabo blanditiis, labore laborum! Mollitia quaerat dolorem ex quas totam repellat ullam excepturi nulla?</p>
+      <div class="container-fluid">
+        <div class="buttons">
+          <a class="button_gradient mt-2 mb-5" href="#">Boutique</a>   
+        </div>
+      </div>
+      <div id="carouselExampleControls2" class="carousel slide text-center" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" id="carousel_boutique">
+            <img src="https://zupimages.net/up/21/17/yk2a.jpeg" class="img-fluid mx-2" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://zupimages.net/up/21/17/xqi0.png" class="img-fluid" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://zupimages.net/up/21/17/1qbs.png" class="img-fluid" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://zupimages.net/up/21/17/i9v4.png" class="img-fluid" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="scroll_up">
+      <a href=""><img src="https://zupimages.net/up/21/12/i2mq.png" alt="fleche retour haut" /></a>
+    </div>
+</main> 
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<div class="container-fluid p-0" id="body_movie">
+		<h1 class="text-center text-white mt-1">Commande n°
+			{{ orderId }}
+			du
+			{{ date.order_date|date('d-m-Y')}}</h1>
+		{% set total = 0 %}
+		<div class="separation"><hr></div>
+		<main class="container-fluid mt-5 pb-5">
+			<div class="row">
+				<table class="text-white">
+					<thead>
+						<tr>
+							<th>Produit</th>
+							<th>Quantité</th>
+							<th>Sous total</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in ticket %}
+							{% set total = total + item.product_id.price * item.qty %}
+							<tr>
+								<td>{{item.product_id.name}}</td>
+								<td>{{item.qty}}</td>
+								<td>{{item.product_id.price * item.qty}}
+									€</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<h2 class="my-5">Total :
+					{{ total }}
+					€
+				</h2>
+			</div>
+		</main>
+	</div>
+</div>{% endblock %}

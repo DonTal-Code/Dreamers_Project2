@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+{% block title %}
+	- Panier
+{% endblock %}
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<div class="container pt-5">
+		<h2>Panier</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Nom</th>
+					<th scope="col">Quantité</th>
+					<th scope="col">Total</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in cart %}
+					<tr>
+						<td>{{product.name}}</td>
+						<td>{{product.qty}}</td>
+						<td>{{product.qty * product.price}}</td>
+						<td>
+							<a href="/home/deleteFromCart/{{product.id}}" class="btn btn-secondary">Delete</a>
+						</td>
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+		<h3>Total :
+			{{totalInCart}}
+			€</h3>
+		{% if session.user is defined and cart is not empty %}
+			<a class="button button-mob" href="/home/order">Passer la commande</a>
+		{% endif %}
+		{% if session.user is empty %}
+			<a class= "button button-mob" href="/security/login">Connectez-vous pour passer la commande</a>
+		{% endif %}
+		<a class="button button-mob" href="/product/indexUser/{{ product.id }}">Continuez votre commande</a>
+	</div>
+{% endblock %}

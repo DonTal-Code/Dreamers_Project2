@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	{% include "_nav_user.html.twig" %}
+	<div class="container-fluid pt-5" id="body">
+		<h1 class="text-center text-white">Produits</h1>
+		<div class="separation"><hr></div>
+		<main class="container-fluid mt-4">
+			<br>
+			<div class="row" id="cards">
+				{% for product in products %}
+					<div class="col-lg-4 col-md-6 col-s-12 p-5" id="card">
+						<div class="card" id="border_card">
+							<img src="{{ product.image }}" href="product/{{ product.id }}" class="card-img-top img-fluid p-2" alt="..." id="image">
+							<div class="card-body text-center">
+								<p class="card-title text-center" style="font-size: 1.5rem">
+									<strong>{{ product.name }}</strong>
+								</p>
+								<p class="card-text text-center text-truncate">
+									<small>{{ product.description }}</small>
+								</p>
+								<p class="card-text">Tarif :
+									{{ product.price }}
+									€</p>
+								{% if product.stock  > 5 %}
+									<p class="card-text bg-success">
+										<small>En stock</small>
+									</p>
+								{% endif %}
+								{% if product.stock <= 5 and product.stock >0 %}
+									<p class="card-text bg-warning">
+										<small>Bientôt épuisé</small>
+									</p>
+								{% endif %}
+								{% if product.stock == 0 %}
+									<p class="card-text bg-danger">
+										<small>En cours de réapprovisionnement</small>
+									</p>
+								{% endif %}
+								<div class="buttons">
+									<a class="button_gradient button-big" href="/home/addToCart/{{ product.id }}">Ajouter au panier</a>
+									<a class="button button-mob" href="/home/showProduct/{{ product.id }}">Plus d'infos</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</main>
+	</div>
+{% endblock %}
