@@ -28,9 +28,19 @@ class AdminController extends AbstractController
             $productManager = new ProductManager();
             $dashBoardProducts = $productManager->selectAll();
 
-            return $this->twig->render('Admin/index.html.twig', ['dashBoardProducts' => $dashBoardProducts, 'order'=>'$order', 'sales' => $sales, 'orders' => $orders,
-                'tickets' => $tickets,'users' => $users, 'userInfo' => array_reverse($userInfo), 'orderAdmin' => array_reverse($orderAdmin)
-            ]);
+            return $this->twig->render(
+                'Admin/index.html.twig',
+                [
+                    'dashBoardProducts' => $dashBoardProducts,
+                    'order' => '$order',
+                    'sales' => $sales,
+                    'orders' => $orders,
+                    'tickets' => $tickets,
+                    'users' => $users,
+                    'userInfo' => array_reverse($userInfo),
+                    'orderAdmin' => array_reverse($orderAdmin)
+                ]
+            );
         } else {
             header('Location: /');
         }
@@ -125,9 +135,13 @@ class AdminController extends AbstractController
                     header('Location:/admin/indexProduct');
                 }
             }
-            return $this->twig->render('Admin/Product/add.html.twig', [
-                'categories' => $categoryManager->selectAll(), 'errors' => $errors
-            ]);
+            return $this->twig->render(
+                'Admin/Product/add.html.twig',
+                [
+                    'categories' => $categoryManager->selectAll(),
+                    'errors' => $errors
+                ]
+            );
         } else {
             header('Location: /');
         }
@@ -190,9 +204,14 @@ class AdminController extends AbstractController
                     header('Location:/admin/indexProduct');
                 }
             }
-            return $this->twig->render('Admin/Product/edit.html.twig', [
-                'product' => $product, 'categories' => $categoryManager->selectAll(), 'errors' => $errors
-            ]);
+            return $this->twig->render(
+                'Admin/Product/edit.html.twig',
+                [
+                    'product' => $product,
+                    'categories' => $categoryManager->selectAll(),
+                    'errors' => $errors
+                ]
+            );
         } else {
             header('Location: /');
         }
@@ -235,13 +254,18 @@ class AdminController extends AbstractController
             $category = $categoryManager->selectOneById($id);
             $productManager = new productManager();
             $products = $productManager->selectAllbyCat();
-            return $this->twig->render('Admin/Category/show.html.twig', [
-                'category' => $category, 'products' => $products
-            ]);
+            return $this->twig->render(
+                'Admin/Category/show.html.twig',
+                [
+                    'category' => $category,
+                    'products' => $products
+                ]
+            );
         } else {
             header('Location: /');
         }
     }
+
     public function editCategory(int $id)
     {
         if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
@@ -322,6 +346,7 @@ class AdminController extends AbstractController
             header('Location: /');
         }
     }
+
     public function showMovie(int $id)
     {
         if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
@@ -333,6 +358,7 @@ class AdminController extends AbstractController
             header('Location: /');
         }
     }
+
     public function editMovie(int $id)
     {
         if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
@@ -381,6 +407,7 @@ class AdminController extends AbstractController
             header('Location: /');
         }
     }
+
     public function addMovie()
     {
         if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
@@ -494,13 +521,18 @@ class AdminController extends AbstractController
                     $errors[] = "Tous les champs sont requis";
                 }
             }
-            return $this->twig->render('Admin/User/register.html.twig', [
-                'user' => $userManager->selectAll(), 'errors' => $errors
-            ]);
+            return $this->twig->render(
+                'Admin/User/register.html.twig',
+                [
+                    'user' => $userManager->selectAll(),
+                    'errors' => $errors
+                ]
+            );
         } else {
             header('Location:/security/login');
         }
     }
+
     public function indexOrders()
     {
         if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
@@ -508,10 +540,40 @@ class AdminController extends AbstractController
             $indexOrders = $orderManager->selectAllForOrders();
             $sales = $orderManager->getTotals();
 
-            return $this->twig->render('Admin/Order/index.html.twig', ['sales' => $sales, 'indexOrders' => $indexOrders]);
+            return $this->twig->render(
+                'Admin/Order/index.html.twig',
+                ['sales' => $sales, 'indexOrders' => $indexOrders]
+            );
         } else {
             header('Location: /');
         }
     }
 
+    public function orderDetailAdmin(int $orderId)
+    {
+        $orderProductManager = new OrderProductManager();
+        $productManager = new ProductManager();
+        $orderManager = new OrderManager();
+
+        $ticket = $orderProductManager->getTicketFromOrderId($orderId);
+
+        $result = [];
+        foreach ($ticket as $detail) {
+            $product = $productManager->selectOneById($detail['product_id']);
+            $detail['product_id'] = $product;
+            $result[] = $detail;
+        }
+        foreach ($ticket as $orderDate) {
+            $orderDate = $orderManager->getDateFromOrder($orderId);
+        }
+        return $this->twig->render(
+            'Admin/Order/show.html.twig',
+            [
+                'ticket' => $result,
+                'date' => $orderDate[$orderId - 1],
+                'orderProduct' => $ticket,
+                'orderId' => $orderId
+            ]
+        );
+    }
 }

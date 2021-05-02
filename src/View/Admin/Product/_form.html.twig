@@ -69,6 +69,10 @@
                 <p>{{ errors.category_id }}</p>
             {% endif %}  
         </div>
+        <div class="input-box">
+            <label for="image" class="form-label">Ajout photo de profil : </label>
+            <input type="file" class="form" id="image" name="image">
+            <button name="send"> Send</button>
         <div class="container-fluid">
             <input type="submit" class="form-button" value="Valider">
             <a type="back" href="/admin/indexProduct" class="return-button" value="Retour"><i class="las la-undo"></i></a>

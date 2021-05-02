@@ -48,7 +48,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h3> Recent Order</h3>
-                        <a href="../../admin/indexOrders"><button> See all> <span class="las la-arrow-right"></span></button></a>
+                        <a href="../../admin/indexOrders">
+                            <button> See all> <span class="las la-arrow-right"></span></button>
+                        </a>
                     </div>
 
                     <div class="card-body">
@@ -57,9 +59,9 @@
                             <table width="100%">
                                 <thead>
                                 <tr>
-                                    <td> Username </td>
+                                    <td> Username</td>
                                     <td> Order N°</td>
-                                    <td> Date </td>
+                                    <td> Date</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -81,25 +83,27 @@
                 <div class="card">
                     <div class="card-header">
                         <h3> New Users</h3>
-                        <a href="../../user/index"><button> See all <span class="las la-arrow-right"></span></button></a>
+                        <a href="../../user/index">
+                            <button> See all <span class="las la-arrow-right"></span></button>
+                        </a>
                     </div>
                     <div class="card-body">
                         {% for i in 0..2 %}
                             <div class="user">
-                            <div class="info">
-                                <img src="{{ userInfo[i].userImg }}" width="60px" height="50px" alt="">
-                                <div>
-                                    <h4> {{ userInfo[i].username }} </h4>
-                                    <small> {{ userInfo[i].birthday }} </small>
+                                <div class="info">
+                                    <img src="{{ userInfo[i].userImg }}" width="60px" height="50px" alt="">
+                                    <div>
+                                        <h4> {{ userInfo[i].username }} </h4>
+                                        <small> {{ userInfo[i].birthday }} </small>
+                                    </div>
+                                </div>
+                                <div class="contact">
+                                    <span class="las la-user-circle"></span>
+                                    <span class="las la-comment"></span>
+                                    <span class="las la-phone"></span>
                                 </div>
                             </div>
-                            <div class="contact">
-                                <span class="las la-user-circle"></span>
-                                <span class="las la-comment"></span>
-                                <span class="las la-phone"></span>
-                            </div>
-                        </div>
-{% endfor %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -109,19 +113,19 @@
                 <div class="card">
                     <div class="card-header">
                         <h3> Products </h3>
-                        <a href="../../admin/indexProduct"><button> See all> <span class="las la-arrow-right"></span></button></a>
+                        <a href="../../admin/indexProduct">
+                            <button> See all> <span class="las la-arrow-right"></span></button>
+                        </a>
                     </div>
-
                     <div class="card-body">
-
                         <div class="table-responsive">
                             <table width="100%">
                                 <thead>
                                 <tr>
-                                    <td> Product Name </td>
-                                    <td> Price </td>
-                                    <td> stock </td>
-                                    <td> Status </td>
+                                    <td>Product Name</td>
+                                    <td> Price</td>
+                                    <td> stock</td>
+                                    <td> Status</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -131,21 +135,20 @@
                                     <td> {{ dashBoardProduct.price }}</td>
                                     <td> {{ dashBoardProduct.stock }}</td>
                                     {% if dashBoardProduct.stock  > 5 %}
-                                    <td>
+                                        <td>
                                             <small>En stock</small>
-                                    </td>>
+                                        </td>
                                     {% endif %}
                                     {% if dashBoardProduct.stock <= 5 and dashBoardProduct.stock >0 %}
                                         <td>
                                             <small>Bientôt épuisé</small>
                                         </td>
-
                                     {% endif %}
                                     {% if dashBoardProduct.stock == 0 %}
-                                        <td>
-                                            <small>En cours de réapprovisionnement</small>
-                                      <td>
-                                    {% endif %}
+                                    <td>
+                                        <small>En cours de réapprovisionnement</small>
+                                    <td>
+                                        {% endif %}
                                 </tbody>
                                 {% endfor %}
                             </table>
@@ -153,7 +156,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 

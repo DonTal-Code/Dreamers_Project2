@@ -320,6 +320,7 @@ td {
     padding: .5rem 0rem;
     font-size: 1.1rem;
     color: white;
+
 }
 .table-responsive {
     width: 100%;
@@ -369,7 +370,12 @@ td {
     color: white;
 }
 .products {
-   margin-left: 50%;
+    margin-left: 20%;
+    width: 100%;
+}
+
+h2 {
+    color: red;
 }
 
 /*Form */
