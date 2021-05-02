@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Model;
-
 use PDO;
+use PDOException;
 
 class OrderManager extends AbstractManager
 {
@@ -59,6 +59,12 @@ class OrderManager extends AbstractManager
     {
         $statement = $this->pdo->prepare('SELECT sum(total) From `order`');
         $statement -> execute();
-        return  $statement->fetchColumn();
+        return $statement->fetchColumn();
     }
+    public function selectAllForOrders(): array
+    {
+        return $this->pdo->query("SELECT order.id, order.order_date, order.total, order.user_id, user.username
+        FROM `order` JOIN `user` ON user.id = order.user_id")->fetchAll();
+    }
+
 }

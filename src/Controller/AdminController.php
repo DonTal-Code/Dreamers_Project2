@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\ContactManager;
 use App\Model\OrderManager;
+use App\Model\OrderProductManager;
 use App\Model\UserManager;
 use App\Model\ProductManager;
 use App\Model\CategoryManager;
@@ -22,9 +23,13 @@ class AdminController extends AbstractController
             $userInfo = $userManager->selectAll();
             $orders = $orderManager->getAllOrders();
             $sales = $orderManager->getTotals();
+            $order = $orderManager->selectAllForOrders();
+            $orderAdmin = $orderManager->selectAllForOrders();
+            $productManager = new ProductManager();
+            $dashBoardProducts = $productManager->selectAll();
 
-            return $this->twig->render('Admin/index.html.twig', ['sales' => $sales, 'orders' => $orders,
-                'tickets' => $tickets,'users' => $users, 'userInfo' => array_reverse($userInfo)
+            return $this->twig->render('Admin/index.html.twig', ['dashBoardProducts' => $dashBoardProducts, 'order'=>'$order', 'sales' => $sales, 'orders' => $orders,
+                'tickets' => $tickets,'users' => $users, 'userInfo' => array_reverse($userInfo), 'orderAdmin' => array_reverse($orderAdmin)
             ]);
         } else {
             header('Location: /');
@@ -496,4 +501,17 @@ class AdminController extends AbstractController
             header('Location:/security/login');
         }
     }
+    public function indexOrders()
+    {
+        if (isset($_SESSION['user']) && $_SESSION['user']['is_admin'] == 1) {
+            $orderManager = new OrderManager();
+            $indexOrders = $orderManager->selectAllForOrders();
+            $sales = $orderManager->getTotals();
+
+            return $this->twig->render('Admin/Order/index.html.twig', ['sales' => $sales, 'indexOrders' => $indexOrders]);
+        } else {
+            header('Location: /');
+        }
+    }
+
 }

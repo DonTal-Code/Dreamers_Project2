@@ -277,6 +277,7 @@ color: white;
     background-color: #000000;
     background-image: linear-gradient(147deg, #434343 0%, #000000 74%);
     border-radius: 5px;
+    height: 100%;
 }
 .card-header,
 .card-body {
@@ -307,7 +308,7 @@ color: white;
 table {
     border-collapse: collapse;
 }
-thead tr {
+thead tr th {
     border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
 
@@ -325,6 +326,16 @@ td {
     overflow-x: auto;
 
 }
+#total {
+    text-align: start;
+    color: red;
+    font-size: 1.5rem;
+}
+#sum {
+    font-size: 1.5rem;
+    color: red;
+}
+
 .user {
     display: flex;
     justify-content: space-between;
@@ -357,6 +368,10 @@ td {
     margin-left: .5rem;
     color: white;
 }
+.products {
+   margin-left: 50%;
+}
+
 /*Form */
 .form-box {
     margin: 0 auto;

@@ -48,44 +48,34 @@
                 <div class="card">
                     <div class="card-header">
                         <h3> Recent Order</h3>
-                        <button> See all> <span class="las la-arrow-right"></span></button>
+                        <a href="../../admin/indexOrders"><button> See all> <span class="las la-arrow-right"></span></button></a>
                     </div>
 
                     <div class="card-body">
+
                         <div class="table-responsive">
                             <table width="100%">
                                 <thead>
                                 <tr>
-                                    <td> User°</td>
+                                    <td> Username </td>
                                     <td> Order N°</td>
-                                    <td> Status</td>
+                                    <td> Date </td>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for i in 0..2 %}
                                 <tr>
-                                    <td> value from table User Name or ID</td>
-                                    <td> value from table Order</td>
-                                    <td><span class="status"></span> pending
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> value from table User Name or ID</td>
-                                    <td> value from table Order</td>
-                                    <td><span class="status"></span> in progress
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> value from table User Name or ID</td>
-                                    <td> value from table Order</td>
-                                    <td><span class="status"></span> delivered
-                                    </td>
-                                </tr>
+                                    <td> {{ orderAdmin[i].username }} </td>
+                                    <td> {{ orderAdmin[i].id }}</td>
+                                    <td>{{ orderAdmin[i].order_date|date("d/m/Y") }}</td>
                                 </tbody>
+                                {% endfor %}
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <div class="users">
                 <div class="card">
@@ -114,9 +104,58 @@
                 </div>
             </div>
         </div>
+        <div class="recent-grid">
+            <div class="products">
+                <div class="card">
+                    <div class="card-header">
+                        <h3> Products </h3>
+                        <a href="../../admin/indexProduct"><button> See all> <span class="las la-arrow-right"></span></button></a>
+                    </div>
 
+                    <div class="card-body">
 
+                        <div class="table-responsive">
+                            <table width="100%">
+                                <thead>
+                                <tr>
+                                    <td> Product Name </td>
+                                    <td> Price </td>
+                                    <td> stock </td>
+                                    <td> Status </td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for dashBoardProduct in dashBoardProducts %}
+                                <tr>
+                                    <td> {{ dashBoardProduct.name }} </td>
+                                    <td> {{ dashBoardProduct.price }}</td>
+                                    <td> {{ dashBoardProduct.stock }}</td>
+                                    {% if dashBoardProduct.stock  > 5 %}
+                                    <td>
+                                            <small>En stock</small>
+                                    </td>>
+                                    {% endif %}
+                                    {% if dashBoardProduct.stock <= 5 and dashBoardProduct.stock >0 %}
+                                        <td>
+                                            <small>Bientôt épuisé</small>
+                                        </td>
+
+                                    {% endif %}
+                                    {% if dashBoardProduct.stock == 0 %}
+                                        <td>
+                                            <small>En cours de réapprovisionnement</small>
+                                      <td>
+                                    {% endif %}
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-</div>
+
 {% endblock %}

@@ -31,7 +31,7 @@ class OrderProductManager extends AbstractManager
 
         $statement->execute();
 
-        return (int) $this->pdo->lastInsertId();
+        return (int)$this->pdo->lastInsertId();
     }
 
     public function getTicketFromOrderId(int $orderId): array
